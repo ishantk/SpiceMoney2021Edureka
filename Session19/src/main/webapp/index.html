@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX Demo</title>
+
+
+<script type="text/javascript">
+
+	var request;
+	
+	function sendSearchRequest(){
+		var searchKeyword = document.searchForm.txtSearch.value;
+		var url = "search.jsp?keyword="+searchKeyword;
+		
+		request = new XMLHttpRequest();
+		
+		try{
+			/* if(searchKeyword != ''){
+				
+			} */
+			request.onreadystatechange = processSearchResults;
+			request.open("GET", url, true);
+			request.send();
+			
+		}catch(e){
+			alert("Something Went Wrong");
+		}
+		
+	}
+	
+	function processSearchResults(){
+		if(request.readyState == 4){
+			var results = request.responseText;
+			document.getElementById("results").innerHTML = results;
+		}
+	}
+
+
+</script>
+
+</head>
+<body>
+
+	<center>
+		<br>
+		Welcome to LMS. Search Users...
+		<br>
+	
+		<form name="searchForm">
+			<input type="text" name="txtSearch" placeholder="Enter Some Text" onkeyup="sendSearchRequest()">
+		</form>
+		
+		<h4>Search Results</h4>
+		<span id="results">
+		
+		</span>
+	
+	</center>
+
+</body>
+</html>

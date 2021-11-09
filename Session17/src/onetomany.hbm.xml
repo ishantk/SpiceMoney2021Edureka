@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   
+   <class name="co.edureka.model.Restaurant" table="RESTAURANT">
+      
+      <id name="rid" column="RID">
+         <generator class="increment"/>
+      </id>
+      
+      <property name="name" column="NAME" />
+      <property name="phone" column="PHONE" />
+      <property name="operatingHours" column="HOURS" />
+      <property name="ratings" column="RATINGS" />
+      <property name="pricePerPerson" column="PPP" />
+      
+      <!-- One to Many Mapping in HBM File -->
+      
+      <list name="dishes" cascade="all">
+      	<key column="RID"/>								<!-- RID Column will be created inside the Dish Table -->
+      	<list-index column="idx"/>						<!-- idx column which will be the index of Dish in List will also be created in Dish Table -->
+      	<one-to-many class="co.edureka.model.Dish"/>
+      </list>
+      
+   </class>
+   
+   
+   <class name="co.edureka.model.Dish" table="DISH">
+      
+      <id name="dishId" column="DISHID">
+         <generator class="increment"/>
+      </id>
+      
+      <property name="name" column="NAME" />
+      <property name="price" column="PRICE" />
+      
+   </class>
+   
+</hibernate-mapping>

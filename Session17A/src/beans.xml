@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    
+  <!-- <bean id="ref1" class="co.edureka.bean.Connection" scope="singleton"> -->
+  <!-- <bean id="ref1" class="co.edureka.bean.Connection" scope="prototype"> -->
+  <bean id="ref1" class="co.edureka.bean.Connection" init-method="myInit" destroy-method="myDestroy">
+  	<property name="url" value="jdbc:mysql://localhost/edurekadb"/>
+  	<property name="user" value="john"/>
+  	<property name="password" value="john123"/>
+  </bean>
+  
+  <!-- <bean id="ref2" class="co.edureka.bean.Connection">
+  	<property name="url" value="jdbc:mysql://localhost/mydb"/>
+  	<property name="user" value="fionna.flynn"/>
+  	<property name="password" value="fionna123"/>
+  </bean> -->
+  
+  <bean class="co.edureka.bean.PostProcessor"/>
+
+</beans>
