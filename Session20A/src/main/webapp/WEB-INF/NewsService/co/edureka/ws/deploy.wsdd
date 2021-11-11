@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from NewsService WSDL service -->
+
+  <service name="News" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws.edureka.co"/>
+      <parameter name="wsdlServiceElement" value="NewsService"/>
+      <parameter name="schemaQualified" value="http://ws.edureka.co"/>
+      <parameter name="wsdlServicePort" value="News"/>
+      <parameter name="className" value="co.edureka.ws.News"/>
+      <parameter name="wsdlPortType" value="News"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://ws.edureka.co" xmlns:retNS="http://ws.edureka.co" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getNews" qname="operNS:getNews" returnQName="retNS:getNewsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://ws.edureka.co" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:city" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.edureka.co" xmlns:retNS="http://ws.edureka.co" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getRate" qname="operNS:getRate" returnQName="retNS:getRateReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://ws.edureka.co" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:digitalCurrency" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="getRate getNews"/>
+
+  </service>
+</deployment>

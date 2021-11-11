@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.edureka.co" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.edureka.co" xmlns:intf="http://ws.edureka.co" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.edureka.co" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getNews">
+    <complexType>
+     <sequence>
+      <element name="city" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getNewsResponse">
+    <complexType>
+     <sequence>
+      <element name="getNewsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getRate">
+    <complexType>
+     <sequence>
+      <element name="digitalCurrency" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getRateResponse">
+    <complexType>
+     <sequence>
+      <element name="getRateReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getNewsRequest">
+
+      <wsdl:part element="impl:getNews" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRateRequest">
+
+      <wsdl:part element="impl:getRate" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRateResponse">
+
+      <wsdl:part element="impl:getRateResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getNewsResponse">
+
+      <wsdl:part element="impl:getNewsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="News">
+
+      <wsdl:operation name="getNews">
+
+         <wsdl:input message="impl:getNewsRequest" name="getNewsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getNewsResponse" name="getNewsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRate">
+
+         <wsdl:input message="impl:getRateRequest" name="getRateRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getRateResponse" name="getRateResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="NewsSoapBinding" type="impl:News">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getNews">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getNewsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getNewsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRate">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getRateRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getRateResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="NewsService">
+
+      <wsdl:port binding="impl:NewsSoapBinding" name="News">
+
+         <wsdlsoap:address location="http://localhost:8080/Session20A/services/News"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
